@@ -1,0 +1,56 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "make",
+            "type": "shell",
+            "command": "& \\\"${HOME}/Downloads/gnu-mcu-eclipse-build-tools-2.11-20180428-1604-win32/GNU MCU Eclipse/Build Tools/2.11-20180428-1604/bin/make.exe\\\"",
+            "problemMatcher": {
+                "base": "$gcc"
+            },
+            "options": {
+                "cwd": "${workspaceRoot}/pca10028/s130/armgcc/"
+            }
+        },
+        {
+            "label": "transfer",
+            "type": "shell",
+            "command": "pscp -batch ./_build/nrf51422_xxac.hex rpizero:blinky.hex",
+            "options": {
+                "cwd": "${workspaceRoot}/pca10028/s130/armgcc/"
+            },
+            "dependsOn": [
+                "make"
+            ]
+        },
+        {
+            "label": "flash and run",
+            "type": "process",
+            "command": "plink",
+            "args": [
+                "rpizero",
+                "bash",
+                "-c",
+                {
+                    "value": "\"sudo openocd -f openocd.cfg -c 'init; reset halt; nrf51 mass_erase; flash write_image s130-201.hex 0; flash write_image blinky.hex; mww 0x4001e504 1; mww 0x10001000 0x0001C000; mww 0x10001008 0xffffff00; mww 0x4001e504 0; reset run; exit'\"",
+                    "quoting": "weak"
+                }
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}/pca10028/s130/armgcc/"
+            },
+            "dependsOn":[
+                "transfer"
+            ]
+        },
+        {
+            "label": "build",
+            "dependsOn": [
+                "flash and run"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
