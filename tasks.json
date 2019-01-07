@@ -6,7 +6,7 @@
         {
             "label": "make",
             "type": "shell",
-            "command": "& \\\"${HOME}/Downloads/gnu-mcu-eclipse-build-tools-2.11-20180428-1604-win32/GNU MCU Eclipse/Build Tools/2.11-20180428-1604/bin/make.exe\\\"",
+            "command": "& \\\"${HOME}/Downloads/gnu-mcu-eclipse-build-tools-2.11-20180428-1604-win32/GNU MCU Eclipse/Build Tools/2.11-20180428-1604/bin/make.exe\\\" -j8",
             "problemMatcher": {
                 "base": "$gcc"
             },
@@ -26,6 +26,26 @@
             ]
         },
         {
+            "label": "flash and run(first time)",
+            "type": "process",
+            "command": "plink",
+            "args": [
+                "rpizero",
+                "bash",
+                "-c",
+                {
+                    "value": "\"sudo openocd -f openocd.cfg -c 'init; reset halt; nrf51 mass_erase; flash write_image s130-201.hex 0; flash write_image blinky.hex; mww 0x4001e504 1; mww 0x10001000 0x0001b000; mww 0x10001008 0xffffff00; mww 0x4001e504 0; reset run; exit'\"",
+                    "quoting": "weak"
+                }
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}/pca10028/s130/armgcc/"
+            },
+            "dependsOn":[
+                "transfer"
+            ]
+        },
+        {
             "label": "flash and run",
             "type": "process",
             "command": "plink",
@@ -34,7 +54,7 @@
                 "bash",
                 "-c",
                 {
-                    "value": "\"sudo openocd -f openocd.cfg -c 'init; reset halt; nrf51 mass_erase; flash write_image s130-201.hex 0; flash write_image blinky.hex; mww 0x4001e504 1; mww 0x10001000 0x0001C000; mww 0x10001008 0xffffff00; mww 0x4001e504 0; reset run; exit'\"",
+                    "value": "\"sudo openocd -f openocd.cfg -c 'init; reset halt; flash write_image erase blinky.hex; reset run; exit'\"",
                     "quoting": "weak"
                 }
             ],

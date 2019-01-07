@@ -3,6 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
+                "${workspaceFolder}/pca10028/s130/config/",
+                "${workspaceFolder}/pca10028/s130/**",
                 "${workspaceFolder}/**",
                 "${workspaceRoot}/../../../components/**",
                 "${workspaceRoot}/../../../external/**"
