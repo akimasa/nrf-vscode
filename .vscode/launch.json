@@ -12,7 +12,7 @@
             "remote": true,
             "executable": "./pca10028/s130/armgcc/_build/nrf51422_xxac.out",
             "cwd": "${workspaceRoot}",
-            "gdbpath": "C:/Program Files (x86)/GNU Tools ARM Embedded/4.9 2015q3/bin/arm-none-eabi-gdb.exe",
+            "gdbpath": "C:\\Users\\akima\\Documents\\gdb-openocd\\gdb-openocd.exe",
             "autorun": [
                 "interrupt",
                 "monitor reset halt",

@@ -17,7 +17,7 @@
         {
             "label": "transfer",
             "type": "shell",
-            "command": "pscp -batch ./_build/nrf51422_xxac.hex rpizero:blinky.hex",
+            "command": "pscp -batch -C ./_build/nrf51422_xxac.hex rpizero:blinky.hex",
             "options": {
                 "cwd": "${workspaceRoot}/pca10028/s130/armgcc/"
             },
@@ -70,6 +70,10 @@
             "dependsOn": [
                 "flash and run"
             ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
             "problemMatcher": []
         }
     ]
