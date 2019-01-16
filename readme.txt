@@ -9,4 +9,4 @@ arm-none-eabi-gcc at C:/Program Files (x86)/GNU Tools ARM Embedded/4.9 2015q3/bi
 putty is installed.
 openocd has setup in rpizero.
 
-feel free to open issues asking me any questions.
+feel free to ask me any questions.
