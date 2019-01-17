@@ -1,5 +1,5 @@
-put gdb_wrapper.json on root of your nrf5 sdk workspace.
-put c_cpp_properties.json, launch.json, settings.json, tasks.json at ${workspaceroot}/.vscode/
+put gdb-openocd/gdb_wrapper.json on root of your nrf5 sdk workspace(${workspaceroot}).
+put .vscode/ at ${workspaceroot}/.vscode/
 
 get gdb_wrapper https://github.com/misodengaku/gdb-openocd
 put on C:\\Users\\akima\\Documents\\gdb-openocd\\gdb-openocd.exe or change launch.json
