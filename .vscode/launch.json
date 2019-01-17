@@ -24,6 +24,10 @@
                 // "monitor mww 0x10001000 0x0001C000",
                 // "monitor mww 0x10001008 0xffffff00",
                 // "monitor mww 0x4001e504 0",
+                "eval \"monitor rtt setup %p 512 SEGGER\\\\ RTT\", &_SEGGER_RTT",
+                "monitor rtt start",
+                "monitor rtt channels",
+                "monitor rttserver start 5555 0",
                 "monitor reset run",
                 "load",
                 // "break main"
