@@ -1,7 +1,7 @@
-put gdb-openocd/gdb_wrapper.json on root of your nrf5 sdk workspace(${workspaceroot}).
-put .vscode/ at ${workspaceroot}/.vscode/
+mv gdb-openocd/gdb_wrapper.json ${workspaceroot}/
+mv .vscode ${workspaceroot}/.vscode
 
-get gdb_wrapper https://github.com/misodengaku/gdb-openocd
+build gdb-openocd/
 put on C:\\Users\\akima\\Documents\\gdb-openocd\\gdb-openocd.exe or change launch.json
 
 make.exe at ${HOME}/Downloads/gnu-mcu-eclipse-build-tools-2.11-20180428-1604-win32/GNU MCU Eclipse/Build Tools/2.11-20180428-1604/bin/make.exe
