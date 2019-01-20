@@ -31,7 +31,8 @@
                 "monitor reset run",
                 "load",
                 // "break main"
-            ]   
+            ],
+            "postDebugTask": "sudo killall openocd"
         }
     ]
 }

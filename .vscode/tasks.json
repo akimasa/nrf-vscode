@@ -54,7 +54,7 @@
                 "bash",
                 "-c",
                 {
-                    "value": "\"sudo openocd -f openocd.cfg -c 'init; reset halt; flash write_image erase blinky.hex; reset run; exit'\"",
+                    "value": "\"sudo openocd -f openocd-flush.cfg -c 'init; reset halt; flash write_image erase blinky.hex; reset run; exit'\"",
                     "quoting": "weak"
                 }
             ],
@@ -75,6 +75,17 @@
                 "isDefault": true
             },
             "problemMatcher": []
-        }
+        },
+        {
+            "label": "sudo killall openocd",
+            "type": "process",
+            "command": "plink",
+            "args": [
+                "rpizero",
+                "bash",
+                "-c",
+                "\"sudo killall openocd\""
+            ]
+        },
     ]
 }
